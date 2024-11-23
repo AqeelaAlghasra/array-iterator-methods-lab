@@ -94,6 +94,8 @@ Exercise 1: Array.prototype.filter()
 Filter the array of inventors into a new array containing only the inventors 
 born in the 1500's.
 
+
+
 - You have an array of inventors, each with a birth year listed by the property 
   'year'.
 - Use the Array.prototype.filter() method to create a new array.
@@ -102,15 +104,19 @@ born in the 1500's.
 */
 
 let veryOldInventors = [];
+veryOldInventors= inventors.filter( inventor =>{
+    return inventor.year > 1499 && inventor.year < 1599
+})
+
 
 // Complete the exercise in the space below:
 
 // Check your work:
 console.log('Exercise 1 my result: ', veryOldInventors);
-console.log('Exercise 1 correct result: ', [
-  { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
-  { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
-]);
+// console.log('Exercise 1 correct result: ', [
+//   { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+//   { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+// ]);
 
 
 
@@ -133,24 +139,31 @@ Hint: Return a new object literal from the callback that looks like:
 
 let inventorNames = [];
 
+inventorNames = inventors.map(inventor=>{
+
+    return { first:`  ${inventor.first}`, last:` ${inventor.last} `}
+
+})
+
 // Complete the exercise in the space below:
 
 // Check your work:
 console.log('Exercise 2 my result: ', inventorNames);
-console.log('Exercise 2 correct result: ', [
-  { first: 'Albert', last: 'Einstein' },
-  { first: 'Isaac', last: 'Newton' },
-  { first: 'Galileo', last: 'Galilei' },
-  { first: 'Marie', last: 'Curie' },
-  { first: 'Johannes', last: 'Kepler' },
-  { first: 'Nicolaus', last: 'Copernicus' },
-  { first: 'Max', last: 'Planck' },
-  { first: 'Katherine', last: 'Blodgett' },
-  { first: 'Ada', last: 'Lovelace' },
-  { first: 'Sarah E.', last: 'Goode' },
-  { first: 'Lise', last: 'Meitner' },
-  { first: 'Hanna', last: 'Hammarström' },
-]);
+
+// console.log('Exercise 2 correct result: ', [
+//   { first: 'Albert', last: 'Einstein' },
+//   { first: 'Isaac', last: 'Newton' },
+//   { first: 'Galileo', last: 'Galilei' },
+//   { first: 'Marie', last: 'Curie' },
+//   { first: 'Johannes', last: 'Kepler' },
+//   { first: 'Nicolaus', last: 'Copernicus' },
+//   { first: 'Max', last: 'Planck' },
+//   { first: 'Katherine', last: 'Blodgett' },
+//   { first: 'Ada', last: 'Lovelace' },
+//   { first: 'Sarah E.', last: 'Goode' },
+//   { first: 'Lise', last: 'Meitner' },
+//   { first: 'Hanna', last: 'Hammarström' },
+// ]);
 
 
 /*
@@ -163,23 +176,26 @@ the past to those born most recently).
 let sortedByBirthYear = [];
 
 // Complete the exercise in the space below:
+sortedByBirthYear= inventors.sort((a,b)=>{
 
+    return a.year -b.year
+})
 // Check your work:
 console.log('Exercise 3 my result: ', sortedByBirthYear);
-console.log('Exercise 3 correct result: ', [
-  { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
-  { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
-  { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
-  { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
-  { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
-  { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 },
-  { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
-  { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
-  { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
-  { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
-  { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
-  { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
-]);
+// console.log('Exercise 3 correct result: ', [
+//   { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+//   { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+//   { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+//   { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+//   { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+//   { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 },
+//   { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+//   { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+//   { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+//   { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+//   { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+//   { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+// ]);
 
 
 /* 
@@ -198,15 +214,17 @@ from an array of inventor objects
 let inventorNamedAda = {};
 
 // Complete the exercise in the space below:
+inventorNamedAda=inventors.filter(inventor => {return inventor.first === "Ada"})
+
 
 // Check your work:
 console.log('Exercise 4 my result: ', inventorNamedAda);
-console.log('Exercise 4 correct result: ', {
-  first: 'Ada',
-  last: 'Lovelace',
-  year: 1815,
-  passed: 1852,
-});
+// console.log('Exercise 4 correct result: ', {
+//   first: 'Ada',
+//   last: 'Lovelace',
+//   year: 1815,
+//   passed: 1852,
+// });
 
 
 /*
@@ -225,50 +243,59 @@ let firstLast = [];
 
 // Complete the exercise in the space below:
 
+
+firstLast = people.map(person=>{
+
+    splitResult=person.split(',') 
+    return `${splitResult[1]} ${splitResult[0]}`
+
+})
+
+
 // Check your work:
 console.log('Exercise 5 my result: ', firstLast);
-console.log('Exercise 5 correct result: ', [
-  'Carl Becker',
-  'Samuel Beckett',
-  'Mick Beddoes',
-  'Henry Beecher',
-  'Ludwig Beethoven',
-  'Menachem Begin',
-  'Hilaire Belloc',
-  'Saul Bellow',
-  'Robert Benchley',
-  'Peter Benenson',
-  'David Ben-Gurion',
-  'Walter Benjamin',
-  'Tony Benn',
-  'Chester Bennington',
-  'Leana Benson',
-  'Silas Bent',
-  'Lloyd Bentsen',
-  'Ric Berger',
-  'Ingmar Bergman',
-  'Luciano Berio',
-  'Milton Berle',
-  'Irving Berlin',
-  'Eric Berne',
-  'Sandra Bernhard',
-  'Yogi Berra',
-  'Halle Berry',
-  'Wendell Berry',
-  'Erin Bethea',
-  'Aneurin Bevan',
-  'Ken Bevel',
-  'Joseph Biden',
-  'Ambrose Bierce',
-  'Steve Biko',
-  'Josh Billings',
-  'Frank Biondo',
-  'Augustine Birrell',
-  'Elk Black',
-  'Robert Blair',
-  'Tony Blair',
-  'William Blake',
-]);
+// console.log('Exercise 5 correct result: ', [
+//   'Carl Becker',
+//   'Samuel Beckett',
+//   'Mick Beddoes',
+//   'Henry Beecher',
+//   'Ludwig Beethoven',
+//   'Menachem Begin',
+//   'Hilaire Belloc',
+//   'Saul Bellow',
+//   'Robert Benchley',
+//   'Peter Benenson',
+//   'David Ben-Gurion',
+//   'Walter Benjamin',
+//   'Tony Benn',
+//   'Chester Bennington',
+//   'Leana Benson',
+//   'Silas Bent',
+//   'Lloyd Bentsen',
+//   'Ric Berger',
+//   'Ingmar Bergman',
+//   'Luciano Berio',
+//   'Milton Berle',
+//   'Irving Berlin',
+//   'Eric Berne',
+//   'Sandra Bernhard',
+//   'Yogi Berra',
+//   'Halle Berry',
+//   'Wendell Berry',
+//   'Erin Bethea',
+//   'Aneurin Bevan',
+//   'Ken Bevel',
+//   'Joseph Biden',
+//   'Ambrose Bierce',
+//   'Steve Biko',
+//   'Josh Billings',
+//   'Frank Biondo',
+//   'Augustine Birrell',
+//   'Elk Black',
+//   'Robert Blair',
+//   'Tony Blair',
+//   'William Blake',
+// ]);
 
 
 
@@ -288,7 +315,12 @@ let isAdultPresent = null;
 
 // Complete the exercise in the space below:
 
-// Check your work:
+isAdultPresent = devs.some(dev=>{
+    return 2024-dev.year >= 18
+})
+
+
+// Check your work:==
 console.log('Exercise 6 my result: ', isAdultPresent);
 console.log('Exercise 6 correct result: ', true);
 
@@ -307,7 +339,14 @@ Use Array.prototype.every() to determine if every person in the devs array is
 - Store the result (true or false) in the variable 'isEveryone19OrOlder'.
 */
 
+
+
 let isEveryone19OrOlder = null;
+
+isEveryone19OrOlder = devs.every(dev =>{
+    //console.log(2024-dev.year)
+    return 2024-dev.year >= 19
+})
 
 // Complete the exercise in the space below:
 
@@ -329,10 +368,16 @@ a specific ID 823423 from an array of comment objects.
 let commentById = {};
 
 // Complete the exercise in the space below:
+commentById=comments.find(comment=>{
+
+    return comment.id =='823423'
+})
+
+
 
 // Check your work:
 console.log('Exercise 8 my result: ', commentById);
-console.log('Exercise 8 correct result: ', { text: 'Super good', id: 823423 });
+// console.log('Exercise 8 correct result: ', { text: 'Super good', id: 823423 });
 
 
 
@@ -349,9 +394,14 @@ let idx = null;
 
 // Complete the exercise in the space below:
 
+idx = comments.findIndex(comment=>{
+    return comment.id =='123523'
+})
+
+
 // Check your work:
 console.log('Exercise 9 my result: ', idx);
-console.log('Exercise 9 correct result: ', 3);
+// console.log('Exercise 9 correct result: ', 3);
 
 
 /*
@@ -379,9 +429,15 @@ let totalYearsLived = 0;
 
 // Complete the exercise in the space below:
 
+totalYearsLived = inventors.reduce((total,inventor)=>{
+
+    return total+(inventor.passed-inventor.year)
+
+},0)
+
 // Check your work:
-console.log('Level Up 1 my result: ', totalYearsLived);
-console.log('Level Up 1 correct result: ', 861);
+ console.log('Level Up 1 my result: ', totalYearsLived);
+// console.log('Level Up 1 correct result: ', 861);
 
 
 /*
@@ -408,12 +464,27 @@ let travelMethodCounts = {};
 
 // Complete the exercise in the space below:
 
+travelMethodCounts=travelMethods.reduce((count,method)=>{
+       
+
+    if(method in count){
+        //console.log('exist')
+        count[method]+=1
+    }else{
+        //console.log('new')
+        count[method]=1
+    }
+     
+    return count
+},{})
+
+
 // Check your work:
 console.log('Level Up 2 my result: ', travelMethodCounts);
-console.log('Level Up 2 correct result: ', {
-  car: 5,
-  truck: 3,
-  bike: 2,
-  walk: 2,
-  van: 2,
-});
+// console.log('Level Up 2 correct result: ', {
+//   car: 5,
+//   truck: 3,
+//   bike: 2,
+//   walk: 2,
+//   van: 2,
+// });
